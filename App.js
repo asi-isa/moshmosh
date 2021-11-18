@@ -7,12 +7,14 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+import LDScreen from "./app/screens/LDScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <WelcomeScreen />
+      {/* <WelcomeScreen /> */}
+      <LDScreen />
     </SafeAreaView>
   );
 }

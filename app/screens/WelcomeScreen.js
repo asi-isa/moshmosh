@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, ImageBackground, Image } from "react-native";
 import BTN from "../components/BTN";
 
 import globals from "../config/globals";
