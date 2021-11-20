@@ -30,7 +30,7 @@ export default function MainScreen() {
     <View style={styles.con}>
       <FlatList
         data={cards}
-        renderItem={({ item, index }) => (
+        renderItem={({ item }) => (
           <Card
             image={item.image}
             title={item.title}

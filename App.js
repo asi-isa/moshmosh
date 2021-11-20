@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import globals from "./app/config/globals";
 import AccountScreen from "./app/screens/AccountScreen";
+import Blank from "./app/screens/Blank";
 import LDScreen from "./app/screens/LDScreen";
 import MainScreen from "./app/screens/MainScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
@@ -19,7 +20,8 @@ export default function App() {
       {/* <WelcomeScreen /> */}
       {/* <LDScreen /> */}
       {/* <AccountScreen /> */}
-      <MainScreen />
+      {/* <MainScreen /> */}
+      <Blank />
     </SafeAreaView>
   );
 }
