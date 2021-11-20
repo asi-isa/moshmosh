@@ -37,7 +37,7 @@ export default function AccountScreen() {
             />
           }
           color={globals.secondary}
-          title="My Messages"
+          title="My Somes"
         />
       </View>
 

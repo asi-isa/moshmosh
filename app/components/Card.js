@@ -4,9 +4,9 @@ import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import globals from "../config/globals";
 import H2Text from "./H2Text";
 
-export default function Card({ title, subtitle, image }) {
+export default function Card({ title, subtitle, image, style }) {
   return (
-    <ImageBackground style={styles.img_bg} source={image}>
+    <ImageBackground style={[styles.img_bg, style]} source={image}>
       <View style={styles.con}>
         <H2Text addStyles={styles.title}>{title}</H2Text>
         <Text style={styles.subtitle}>$ {subtitle}</Text>

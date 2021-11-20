@@ -7,8 +7,10 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+import globals from "./app/config/globals";
 import AccountScreen from "./app/screens/AccountScreen";
 import LDScreen from "./app/screens/LDScreen";
+import MainScreen from "./app/screens/MainScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
@@ -16,7 +18,8 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       {/* <WelcomeScreen /> */}
       {/* <LDScreen /> */}
-      <AccountScreen />
+      {/* <AccountScreen /> */}
+      <MainScreen />
     </SafeAreaView>
   );
 }
@@ -24,7 +27,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: globals.creamwhite,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });
