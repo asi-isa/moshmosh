@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { colors } from "../config/globals";
+
+import { colors } from "../../config/globals";
 
 export default function AppTextInput({
   icon,
   iconSize = 16,
   placeholder,
-  getInput,
+  setFieldTouched,
+  name,
   ...inputProps
 }) {
-  const [textInput, setTextInput] = useState("");
   const [focus, setFocus] = useState(false);
 
   return (
@@ -28,10 +29,13 @@ export default function AppTextInput({
       <TextInput
         style={styles.input}
         placeholder={placeholder}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        onChangeText={(text) => setTextInput(text)}
-        onSubmitEditing={() => getInput(textInput)}
+        onFocus={() => {
+          setFocus(true);
+        }}
+        onBlur={() => {
+          setFocus(false);
+          setFieldTouched(name);
+        }}
         {...inputProps}
       />
     </View>

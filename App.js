@@ -11,6 +11,7 @@ import globals from "./app/config/globals";
 import AccountScreen from "./app/screens/AccountScreen";
 import Blank from "./app/screens/Blank";
 import LDScreen from "./app/screens/LDScreen";
+import LoginScreen from "./app/screens/LoginScreen";
 import MainScreen from "./app/screens/MainScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
@@ -21,7 +22,7 @@ export default function App() {
       {/* <LDScreen /> */}
       {/* <AccountScreen /> */}
       {/* <MainScreen /> */}
-      <Blank />
+      <LoginScreen />
     </SafeAreaView>
   );
 }
