@@ -34,12 +34,20 @@ export default function LoginScreen() {
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
-          <AppFormField name="email" autoFocus placeholder="email@mail.de" />
+          <AppFormField
+            name="email"
+            autoFocus
+            placeholder="email@mail.de"
+            icon="email"
+            iconSize={19}
+          />
 
           <AppFormField
             name="password"
             placeholder="Password"
             secureTextEntry
+            icon="lock"
+            iconSize={19}
           />
 
           <AppSubmitButton title="Log in" style={styles.btn} />

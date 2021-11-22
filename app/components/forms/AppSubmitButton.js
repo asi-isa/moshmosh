@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   btn_con: {
     borderWidth: 2,
     borderRadius: 16,
-    paddingVertical: 5,
+    paddingVertical: 8,
     alignItems: "center",
   },
   btn_text: {
