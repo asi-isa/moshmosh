@@ -1,9 +1,18 @@
 import React from "react";
-import { StyleSheet, TextInput, Button, View, Text } from "react-native";
-import { Formik } from "formik";
+import {
+  StyleSheet,
+  Image,
+  Button,
+  View,
+  Text,
+  ImageBackground,
+} from "react-native";
 import * as Yup from "yup";
 
+import globals, { colors } from "../config/globals";
 import { AppForm, AppFormField, AppSubmitButton } from "../components/forms";
+import AppText from "../components/AppText";
+import ImageOverlay from "../components/ImageOverlay";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -13,6 +22,12 @@ const validationSchema = Yup.object().shape({
 export default function LoginScreen() {
   return (
     <View style={styles.con}>
+      <View style={styles.header}>
+        <Image style={styles.img} source={require("../assets/favicon.png")} />
+
+        <AppText style={styles.title}>moshmosh</AppText>
+      </View>
+
       <View style={styles.form}>
         <AppForm
           initialValues={{ email: "", password: "" }}
@@ -27,7 +42,7 @@ export default function LoginScreen() {
             secureTextEntry
           />
 
-          <AppSubmitButton title="go" />
+          <AppSubmitButton title="Log in" style={styles.btn} />
         </AppForm>
       </View>
     </View>
@@ -36,7 +51,23 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   con: {
-    padding: 16,
+    flex: 1,
+    justifyContent: "space-around",
   },
-  form: {},
+  header: {
+    alignItems: "center",
+  },
+  img: {
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 21,
+    fontWeight: "500",
+  },
+  form: {
+    marginHorizontal: globals.vw * 0.05,
+  },
+  btn: {
+    marginTop: globals.vh * 0.05,
+  },
 });

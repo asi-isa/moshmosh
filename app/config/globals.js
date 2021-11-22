@@ -24,7 +24,10 @@ const colors = {
   darkGrey: "#0c0c0c",
   yellow: "#ffe66d",
   creamwhite: "#f8f4f4",
-  primary: "#EB686B",
+  primary: "rgba(235,104,107,1)",
+  primary50: "rgba(235,104,107,0.5)",
+  primary30: "rgba(235,104,107,0.3)",
+  primary10: "rgba(235,104,107,0.1)",
   secondary: "#73CBC4",
 };
 

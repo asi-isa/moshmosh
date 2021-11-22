@@ -18,7 +18,7 @@ export default function AppTextInput({
     <View
       style={[
         styles.con,
-        { borderBottomColor: focus ? colors.darkGrey : colors.grey },
+        { borderColor: focus ? colors.primary : colors.primary50 },
       ]}
     >
       <MaterialCommunityIcons
@@ -44,13 +44,16 @@ export default function AppTextInput({
 
 const styles = StyleSheet.create({
   con: {
-    padding: 4,
+    padding: 9,
+    marginBottom: 8,
     flexDirection: "row",
     alignItems: "center",
-    borderBottomWidth: 1,
-    marginHorizontal: 16,
+    borderWidth: 2,
+    borderRadius: 16,
+    backgroundColor: colors.primary10,
   },
   input: {
-    marginLeft: 8,
+    fontSize: 20,
+    width: "100%",
   },
 });

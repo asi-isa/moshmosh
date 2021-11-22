@@ -3,7 +3,7 @@ import { StyleSheet, View, ImageBackground, Image } from "react-native";
 import BTN from "../components/BTN";
 
 import globals from "../config/globals";
-import H2Text from "../components/H2Text";
+import AppText from "../components/AppText";
 
 export default function WelcomeScreen() {
   return (

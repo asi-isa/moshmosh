@@ -8,12 +8,12 @@ import {
 } from "react-native";
 
 import globals from "../config/globals";
-import H2Text from "./H2Text";
+import AppText from "./AppText";
 
 export default function BTN({ children, btnStyles, textStyles }) {
   return (
     <TouchableOpacity style={[styles.btn, btnStyles]}>
-      <H2Text addStyles={[styles.text, textStyles]}>{children}</H2Text>
+      <AppText style={[styles.text, textStyles]}>{children}</AppText>
     </TouchableOpacity>
   );
 }

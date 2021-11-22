@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import globals from "../config/globals";
 
-import H2Text from "./H2Text";
+import AppText from "./AppText";
 
 export default function ListItem({ icon, color, title, style }) {
   return (
     <View style={[styles.con, style]}>
       <View style={[styles.icon_con, { backgroundColor: color }]}>{icon}</View>
-      <H2Text addStyles={styles.title}>{title}</H2Text>
+      <AppText style={styles.title}>{title}</AppText>
     </View>
   );
 }

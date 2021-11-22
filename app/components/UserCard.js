@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 import globals from "../config/globals";
-import H2Text from "./H2Text";
+import AppText from "./AppText";
 
 export default function UserCard({ img, name, email, style }) {
   return (
@@ -10,7 +10,7 @@ export default function UserCard({ img, name, email, style }) {
       <Image style={styles.img} source={img} />
 
       <View style={styles.user_info}>
-        <H2Text addStyles={styles.user_name}>{name}</H2Text>
+        <AppText addStyles={styles.user_name}>{name}</AppText>
         <Text style={styles.user_email}>{email}</Text>
       </View>
     </View>

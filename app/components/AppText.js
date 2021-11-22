@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, Platform } from "react-native";
 
-export default function H2Text({ children, addStyles }) {
-  return <Text style={[styles.text, addStyles]}>{children}</Text>;
+export default function AppText({ children, style }) {
+  return <Text style={[styles.text, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
