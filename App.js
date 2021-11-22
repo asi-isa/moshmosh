@@ -13,6 +13,7 @@ import Blank from "./app/screens/Blank";
 import LDScreen from "./app/screens/LDScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import MainScreen from "./app/screens/MainScreen";
+import RegisterScreen from "./app/screens/RegisterScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 
 export default function App() {
@@ -22,7 +23,8 @@ export default function App() {
       {/* <LDScreen /> */}
       {/* <AccountScreen /> */}
       {/* <MainScreen /> */}
-      <LoginScreen />
+      {/* <LoginScreen /> */}
+      <RegisterScreen />
     </SafeAreaView>
   );
 }

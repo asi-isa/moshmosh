@@ -7,11 +7,12 @@ import { AppForm, AppFormField, AppSubmitButton } from "../components/forms";
 import AppText from "../components/AppText";
 
 const validationSchema = Yup.object().shape({
+  name: Yup.string().required().min(4).label("Name"),
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-export default function LoginScreen() {
+export default function RegisterScreen() {
   return (
     <View style={styles.con}>
       <View style={styles.header}>
@@ -22,10 +23,18 @@ export default function LoginScreen() {
 
       <View style={styles.form}>
         <AppForm
-          initialValues={{ email: "", password: "" }}
+          initialValues={{ name: "", email: "", password: "" }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
+          <AppFormField
+            name="email"
+            autoFocus
+            placeholder="Hello my name is"
+            icon="account"
+            iconSize={19}
+          />
+
           <AppFormField
             name="email"
             autoFocus
@@ -42,7 +51,7 @@ export default function LoginScreen() {
             iconSize={19}
           />
 
-          <AppSubmitButton title="Log in" style={styles.btn} />
+          <AppSubmitButton title="Sign Up" style={styles.btn} />
         </AppForm>
       </View>
     </View>
