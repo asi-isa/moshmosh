@@ -29,6 +29,7 @@ export default function AppTextInput({
       <TextInput
         style={styles.input}
         placeholder={placeholder}
+        placeholderTextColor={colors.grey}
         onFocus={() => {
           setFocus(true);
         }}

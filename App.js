@@ -11,6 +11,7 @@ import globals from "./app/config/globals";
 import AccountScreen from "./app/screens/AccountScreen";
 import Blank from "./app/screens/Blank";
 import LDScreen from "./app/screens/LDScreen";
+import ListEditingScreen from "./app/screens/ListEditingScreen";
 import LoginScreen from "./app/screens/LoginScreen";
 import MainScreen from "./app/screens/MainScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
@@ -24,7 +25,8 @@ export default function App() {
       {/* <AccountScreen /> */}
       {/* <MainScreen /> */}
       {/* <LoginScreen /> */}
-      <RegisterScreen />
+      {/* <RegisterScreen /> */}
+      <ListEditingScreen />
     </SafeAreaView>
   );
 }
