@@ -10,7 +10,7 @@ import AppFormPicker from "../components/forms/AppFormPicker";
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(4).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
-  category: Yup.string().required().label("Category"),
+  category: Yup.object().required().label("Category"),
   description: Yup.string().label("Description"),
 });
 

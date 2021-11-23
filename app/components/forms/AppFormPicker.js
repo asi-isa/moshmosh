@@ -7,24 +7,28 @@ import { colors } from "../../config/globals";
 import OptionItem from "../OptionItem";
 
 const OPTIONS = [
-  { value: 0, name: "somestuff" },
-  { value: 1, name: "electronic" },
-  { value: 2, name: "food" },
-  { value: 3, name: "books" },
+  { value: 0, name: "somestuff", icon: "cards", color: "#fc5c65" },
+  { value: 1, name: "electronic", icon: "headphones", color: "#fd9644" },
+  { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
+  { value: 3, name: "books", icon: "book", color: "#26de81" },
+  { value: 0, name: "somestuff", icon: "cards", color: "#fc5c65" },
+  { value: 1, name: "electronic", icon: "headphones", color: "#fd9644" },
+  { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
+  { value: 3, name: "books", icon: "book", color: "#26de81" },
+  { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
+  { value: 3, name: "books", icon: "book", color: "#26de81" },
 ];
 
 export default function AppFormPicker({ name, ...otherProps }) {
   const [pressed, setPressed] = useState(false);
   const { values, touched, errors } = useFormikContext();
 
-  console.log("values", values[name]);
-
   return (
     <>
       <View
         style={[
           styles.con,
-          { borderColor: pressed ? colors.primary : colors.primary30 },
+          { borderColor: pressed ? colors.primary : colors.primary50 },
         ]}
       >
         <Pressable
@@ -35,7 +39,7 @@ export default function AppFormPicker({ name, ...otherProps }) {
           style={[styles.pressable]}
         >
           <Text style={styles.input}>
-            {values[name] ? values[name] : "Category"}
+            {values[name] ? values[name].name : "Category"}
           </Text>
 
           <MaterialCommunityIcons
@@ -45,6 +49,13 @@ export default function AppFormPicker({ name, ...otherProps }) {
           />
 
           <Modal animationType="slide" visible={pressed} style={styles.modal}>
+            <Pressable onPress={() => setPressed(false)}>
+              <MaterialCommunityIcons
+                name="close"
+                size={42}
+                style={{ alignSelf: "center", marginTop: 33 }}
+              />
+            </Pressable>
             <View style={styles.modal_view}>
               {OPTIONS.map((option, index) => (
                 <OptionItem
@@ -88,7 +99,9 @@ const styles = StyleSheet.create({
   modal: {},
   modal_view: {
     flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "center",
-    alignItems: "center",
+    alignContent: "center",
   },
 });
