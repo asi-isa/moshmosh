@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { colors } from "../../config/globals";
 import OptionItem from "../OptionItem";
+import OptionsModal from "../OptionsModal";
 
 const OPTIONS = [
   { value: 0, name: "somestuff", icon: "cards", color: "#fc5c65" },
@@ -48,25 +49,12 @@ export default function AppFormPicker({ name, ...otherProps }) {
             color={colors.grey}
           />
 
-          <Modal animationType="slide" visible={pressed} style={styles.modal}>
-            <Pressable onPress={() => setPressed(false)}>
-              <MaterialCommunityIcons
-                name="close"
-                size={42}
-                style={{ alignSelf: "center", marginTop: 33 }}
-              />
-            </Pressable>
-            <View style={styles.modal_view}>
-              {OPTIONS.map((option, index) => (
-                <OptionItem
-                  name={name}
-                  option={option}
-                  setPressed={setPressed}
-                  key={index}
-                />
-              ))}
-            </View>
-          </Modal>
+          <OptionsModal
+            name={name}
+            visible={pressed}
+            onPress={setPressed}
+            data={OPTIONS}
+          />
         </Pressable>
       </View>
       {touched[name] && <Text style={{ color: "red" }}>{errors[name]}</Text>}
@@ -95,13 +83,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 8,
     color: colors.grey,
-  },
-  modal: {},
-  modal_view: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    alignContent: "center",
   },
 });
