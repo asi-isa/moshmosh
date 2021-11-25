@@ -20,7 +20,7 @@ const OPTIONS = [
   { value: 3, name: "books", icon: "book", color: "#26de81" },
 ];
 
-export default function AppFormPicker({ name, ...otherProps }) {
+export default function AppFormPicker({ name, style, ...otherProps }) {
   const [pressed, setPressed] = useState(false);
   const { values, touched, errors } = useFormikContext();
 
@@ -29,6 +29,7 @@ export default function AppFormPicker({ name, ...otherProps }) {
       <View
         style={[
           styles.con,
+          style,
           { borderColor: pressed ? colors.primary : colors.primary50 },
         ]}
       >
@@ -57,7 +58,9 @@ export default function AppFormPicker({ name, ...otherProps }) {
           />
         </Pressable>
       </View>
-      {touched[name] && <Text style={{ color: "red" }}>{errors[name]}</Text>}
+      {touched[name] && errors[name] && (
+        <Text style={{ color: "red" }}>{errors[name]}</Text>
+      )}
     </>
   );
 }
@@ -65,7 +68,6 @@ export default function AppFormPicker({ name, ...otherProps }) {
 const styles = StyleSheet.create({
   con: {
     padding: 9,
-    marginBottom: 8,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

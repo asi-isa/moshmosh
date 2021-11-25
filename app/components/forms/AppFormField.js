@@ -16,7 +16,9 @@ export default function AppFormField({ name, ...otherProps }) {
         {...otherProps}
       />
 
-      {touched[name] && <Text style={{ color: "red" }}>{errors[name]}</Text>}
+      {touched[name] && errors[name] && (
+        <Text style={{ color: "red" }}>{errors[name]}</Text>
+      )}
     </View>
   );
 }

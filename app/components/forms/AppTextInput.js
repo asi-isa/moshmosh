@@ -10,6 +10,7 @@ export default function AppTextInput({
   placeholder,
   setFieldTouched,
   name,
+  style,
   ...inputProps
 }) {
   const [focus, setFocus] = useState(false);
@@ -18,6 +19,7 @@ export default function AppTextInput({
     <View
       style={[
         styles.con,
+        style,
         { borderColor: focus ? colors.primary : colors.primary50 },
       ]}
     >
@@ -46,7 +48,6 @@ export default function AppTextInput({
 const styles = StyleSheet.create({
   con: {
     padding: 9,
-    marginBottom: 8,
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 2,

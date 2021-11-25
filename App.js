@@ -7,6 +7,7 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+import AppImageInput from "./app/components/forms/AppImageInput";
 import globals from "./app/config/globals";
 import AccountScreen from "./app/screens/AccountScreen";
 import Blank from "./app/screens/Blank";
@@ -27,6 +28,7 @@ export default function App() {
       {/* <LoginScreen /> */}
       {/* <RegisterScreen /> */}
       <ListEditingScreen />
+      {/* <AppImageInput /> */}
     </SafeAreaView>
   );
 }

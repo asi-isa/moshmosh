@@ -6,8 +6,12 @@ import globals, { colors } from "../config/globals";
 import { AppForm, AppFormField, AppSubmitButton } from "../components/forms";
 import AppText from "../components/AppText";
 import AppFormPicker from "../components/forms/AppFormPicker";
+import AppImageInput from "../components/forms/AppImageInput";
+import { useFormikContext } from "formik";
+import ImageInputSection from "../components/forms/ImageInputSection";
 
 const validationSchema = Yup.object().shape({
+  img: Yup.array().required().label("Image"),
   title: Yup.string().required().min(4).label("Title"),
   price: Yup.number().required().min(1).max(10000).label("Price"),
   category: Yup.object().required().label("Category"),
@@ -25,14 +29,34 @@ export default function ListEditingScreen() {
 
       <View style={styles.form}>
         <AppForm
-          initialValues={{ title: "", price: 0, category: "", description: "" }}
+          initialValues={{
+            img: "",
+            title: "",
+            price: "",
+            category: "",
+            description: "",
+          }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
         >
-          <AppFormField name="title" autoFocus placeholder="Title" />
-          <AppFormField name="price" placeholder="Price" />
-          <AppFormPicker name="category" />
-          <AppFormField name="description" placeholder="Description" />
+          <ImageInputSection fieldName="img" style={styles.childStyles} />
+
+          <AppFormField
+            name="title"
+            style={styles.childStyles}
+            placeholder="Title"
+          />
+          <AppFormField
+            name="price"
+            style={styles.childStyles}
+            placeholder="Price"
+          />
+          <AppFormPicker name="category" style={styles.childStyles} />
+          <AppFormField
+            name="description"
+            style={styles.childStyles}
+            placeholder="Description"
+          />
 
           <AppSubmitButton title="Post" style={styles.btn} />
         </AppForm>
@@ -61,5 +85,8 @@ const styles = StyleSheet.create({
   },
   btn: {
     marginTop: globals.vh * 0.05,
+  },
+  childStyles: {
+    marginBottom: 8,
   },
 });
