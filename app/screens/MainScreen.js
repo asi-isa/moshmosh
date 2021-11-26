@@ -4,7 +4,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import globals from "../config/globals";
 
-export default function MainScreen() {
+export default function MainScreen({ navigation }) {
   const [cards, setCards] = useState([
     {
       image: require("../assets/bg.jpg"),
@@ -36,6 +36,7 @@ export default function MainScreen() {
             title={item.title}
             subtitle={item.subtitle}
             style={styles.card}
+            onPress={() => navigation.navigate("Details", item)}
           />
         )}
       />

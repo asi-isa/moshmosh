@@ -11,13 +11,9 @@ import { useNavigation } from "@react-navigation/native";
 import globals from "../config/globals";
 import AppText from "./AppText";
 
-export default function Card({ title, subtitle, image, style }) {
-  const navigation = useNavigation();
-
+export default function Card({ title, subtitle, image, style, onPress }) {
   return (
-    <Pressable
-      onPress={() => navigation.navigate("Details", { title, subtitle, image })}
-    >
+    <Pressable onPress={onPress}>
       <ImageBackground style={[styles.img_bg, style]} source={image}>
         <View style={styles.con}>
           <AppText style={styles.title}>{title}</AppText>
