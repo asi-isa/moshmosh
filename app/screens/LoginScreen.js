@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import globals, { colors } from "../config/globals";
 import { AppForm, AppFormField, AppSubmitButton } from "../components/forms";
 import AppText from "../components/AppText";
+import HeaderBackForth from "../components/HeaderBackForth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -13,39 +14,41 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginScreen() {
   return (
-    <View style={styles.con}>
-      <View style={styles.header}>
-        <Image style={styles.img} source={require("../assets/favicon.png")} />
+    <>
+      <HeaderBackForth backTo="Home" />
+      <View style={styles.con}>
+        <View style={styles.header}>
+          <Image style={styles.img} source={require("../assets/favicon.png")} />
 
-        <AppText style={styles.title}>moshmosh</AppText>
+          <AppText style={styles.title}>moshmosh</AppText>
+        </View>
+
+        <View style={styles.form}>
+          <AppForm
+            initialValues={{ email: "", password: "" }}
+            onSubmit={(values) => console.log(values)}
+            validationSchema={validationSchema}
+          >
+            <AppFormField
+              name="email"
+              placeholder="email@mail.de"
+              icon="email"
+              iconSize={19}
+            />
+
+            <AppFormField
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              icon="lock"
+              iconSize={19}
+            />
+
+            <AppSubmitButton title="Log in" style={styles.btn} />
+          </AppForm>
+        </View>
       </View>
-
-      <View style={styles.form}>
-        <AppForm
-          initialValues={{ email: "", password: "" }}
-          onSubmit={(values) => console.log(values)}
-          validationSchema={validationSchema}
-        >
-          <AppFormField
-            name="email"
-            autoFocus
-            placeholder="email@mail.de"
-            icon="email"
-            iconSize={19}
-          />
-
-          <AppFormField
-            name="password"
-            placeholder="Password"
-            secureTextEntry
-            icon="lock"
-            iconSize={19}
-          />
-
-          <AppSubmitButton title="Log in" style={styles.btn} />
-        </AppForm>
-      </View>
-    </View>
+    </>
   );
 }
 

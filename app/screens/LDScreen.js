@@ -1,17 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
+import HeaderBackForth from "../components/HeaderBackForth";
 import globals from "../config/globals";
 
-export default function LDScreen() {
+export default function LDScreen({ route }) {
+  const { image, subtitle, title } = route.params;
+
   return (
-    <View style={styles.con}>
-      <Card
-        title="some good stuff"
-        subtitle="99.99"
-        image={require("../assets/bg.jpg")}
-      />
-    </View>
+    <>
+      <HeaderBackForth backTo="Main" />
+
+      <View style={styles.con}>
+        <Card title={title} subtitle={subtitle} image={image} />
+      </View>
+    </>
   );
 }
 

@@ -1,17 +1,30 @@
 import React from "react";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Pressable,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import globals from "../config/globals";
 import AppText from "./AppText";
 
 export default function Card({ title, subtitle, image, style }) {
+  const navigation = useNavigation();
+
   return (
-    <ImageBackground style={[styles.img_bg, style]} source={image}>
-      <View style={styles.con}>
-        <AppText style={styles.title}>{title}</AppText>
-        <Text style={styles.subtitle}>$ {subtitle}</Text>
-      </View>
-    </ImageBackground>
+    <Pressable
+      onPress={() => navigation.navigate("Details", { title, subtitle, image })}
+    >
+      <ImageBackground style={[styles.img_bg, style]} source={image}>
+        <View style={styles.con}>
+          <AppText style={styles.title}>{title}</AppText>
+          <Text style={styles.subtitle}>$ {subtitle}</Text>
+        </View>
+      </ImageBackground>
+    </Pressable>
   );
 }
 

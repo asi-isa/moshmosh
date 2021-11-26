@@ -19,6 +19,8 @@ const defaultStyles = StyleSheet.create({
 });
 
 const colors = {
+  black: "#000",
+  black30: "rgba(0,0,0,0.3)",
   white: "#fff",
   grey: "#6E7C7C",
   lightGrey: "#E8E1D9",

@@ -1,11 +1,17 @@
 import React from "react";
-import { StyleSheet, View, ImageBackground, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  Image,
+  Pressable,
+} from "react-native";
 import BTN from "../components/BTN";
 
 import globals from "../config/globals";
 import AppText from "../components/AppText";
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.img}
@@ -15,12 +21,17 @@ export default function WelcomeScreen() {
     >
       <View style={styles.logo_con}>
         <Image style={styles.logo} source={require("../assets/favicon.png")} />
-        <H2Text addStyles={styles.logo_text}>sell what you don't need</H2Text>
+        <AppText addStyles={styles.logo_text}>sell what you don't need</AppText>
       </View>
 
       <View style={styles.auth_con}>
-        <BTN>login</BTN>
-        <BTN btnStyles={{ backgroundColor: globals.secondary }}>sign up</BTN>
+        <BTN onPress={() => navigation.navigate("Login")}>Login</BTN>
+        <BTN
+          onPress={() => navigation.navigate("Register")}
+          btnStyles={{ backgroundColor: globals.secondary }}
+        >
+          Register
+        </BTN>
       </View>
     </ImageBackground>
   );

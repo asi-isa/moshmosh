@@ -24,5 +24,7 @@ export default function AppFormField({ name, ...otherProps }) {
 }
 
 const styles = StyleSheet.create({
-  con: {},
+  con: {
+    marginBottom: 8,
+  },
 });

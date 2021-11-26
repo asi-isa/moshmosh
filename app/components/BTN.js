@@ -1,20 +1,14 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 
 import globals from "../config/globals";
 import AppText from "./AppText";
 
-export default function BTN({ children, btnStyles, textStyles }) {
+export default function BTN({ children, btnStyles, textStyles, onPress }) {
   return (
-    <TouchableOpacity style={[styles.btn, btnStyles]}>
+    <Pressable style={[styles.btn, btnStyles]} onPress={onPress}>
       <AppText style={[styles.text, textStyles]}>{children}</AppText>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 

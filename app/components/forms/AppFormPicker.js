@@ -40,7 +40,7 @@ export default function AppFormPicker({ name, style, ...otherProps }) {
           hitSlop={10}
           style={[styles.pressable]}
         >
-          <Text style={styles.input}>
+          <Text style={[styles.input, values[name] && { color: colors.black }]}>
             {values[name] ? values[name].name : "Category"}
           </Text>
 
