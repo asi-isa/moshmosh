@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFormikContext } from "formik";
 import globals, { colors } from "../../config/globals";
 
-export default function AppImageInput({ fieldName, style, setImages, images }) {
+export default function AppImageInput({ fieldName, style, addImage, images }) {
   const [active, setActive] = useState(false);
   const { errors, touched, setFieldValue } = useFormikContext();
 
@@ -25,7 +25,7 @@ export default function AppImageInput({ fieldName, style, setImages, images }) {
     });
 
     if (!result.cancelled) {
-      setImages((currentImages) => [...currentImages, result.uri]);
+      addImage(result.uri);
       setFieldValue(fieldName, images);
     }
   }

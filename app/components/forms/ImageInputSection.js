@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Image, StyleSheet, View, ScrollView, Pressable } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  View,
+  ScrollView,
+  Pressable,
+  Alert,
+} from "react-native";
 import Tooltip from "../Tooltip";
 
 import AppImageInput from "./AppImageInput";
@@ -7,6 +14,12 @@ import AppImageInput from "./AppImageInput";
 export default function ImageInputSection({ fieldName, style }) {
   const [images, setImages] = useState([]);
   const [showTooltip, setShowTooltip] = useState(false);
+
+  function addImage(uri) {
+    if (images.length < 3)
+      setImages((currentImages) => [...currentImages, uri]);
+    else Alert.alert(null, "max 3 images");
+  }
 
   function removeImage(uri) {
     setImages((currentImages) =>
@@ -26,7 +39,7 @@ export default function ImageInputSection({ fieldName, style }) {
     <ScrollView contentContainerStyle={[styles.con, style]} horizontal>
       <AppImageInput
         fieldName={fieldName}
-        setImages={setImages}
+        addImage={addImage}
         images={images}
         style={styles.imgInput}
       />
