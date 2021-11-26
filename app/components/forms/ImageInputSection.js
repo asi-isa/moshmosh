@@ -1,13 +1,29 @@
 import React, { useState } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, ScrollView, Pressable } from "react-native";
+import Tooltip from "../Tooltip";
 
 import AppImageInput from "./AppImageInput";
 
 export default function ImageInputSection({ fieldName, style }) {
   const [images, setImages] = useState([]);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  function removeImage(uri) {
+    setImages((currentImages) =>
+      currentImages.filter((imageUri) => imageUri !== uri)
+    );
+  }
+
+  function toggleTooltip(duration) {
+    setShowTooltip(true);
+
+    setTimeout(() => {
+      setShowTooltip(false);
+    }, duration);
+  }
 
   return (
-    <View style={[styles.con, style]}>
+    <ScrollView contentContainerStyle={[styles.con, style]} horizontal>
       <AppImageInput
         fieldName={fieldName}
         setImages={setImages}
@@ -15,20 +31,24 @@ export default function ImageInputSection({ fieldName, style }) {
         style={styles.imgInput}
       />
       {images.map((imgUri, index) => (
-        <Image source={{ uri: imgUri }} key={index} style={styles.images} />
+        <Pressable
+          key={index}
+          onLongPress={() => removeImage(imgUri)}
+          onPress={() => toggleTooltip(2000)}
+        >
+          <Image source={{ uri: imgUri }} style={styles.img} key={index} />
+          {showTooltip && <Tooltip text="Longpress for deletion" />}
+        </Pressable>
       ))}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  con: {
-    flexDirection: "row",
-  },
   imgInput: {
     marginRight: 8,
   },
-  images: {
+  img: {
     width: 100,
     height: 100,
     marginRight: 8,
