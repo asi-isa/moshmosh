@@ -1,40 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
+import { supabase } from "../db/supabase";
 import Card from "../components/Card";
 import globals from "../config/globals";
 
 export default function MainScreen({ navigation }) {
-  const [cards, setCards] = useState([
-    {
-      image: require("../assets/bg.jpg"),
-      title: "Some Some",
-      subtitle: "9.99",
-      id: 3,
-    },
-    {
-      image: require("../assets/bg.jpg"),
-      title: "Some Stuff",
-      subtitle: "9.99",
-      id: 33,
-    },
-    {
-      image: require("../assets/bg.jpg"),
-      title: "Some Stuff",
-      subtitle: "9.99",
-      id: 333,
-    },
-  ]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    request();
+  }, []);
+
+  async function request() {
+    try {
+      const { data, error } = await supabase.from("listings").select("*");
+      console.log(data);
+      setData(data);
+    } catch (error) {}
+  }
 
   return (
     <View style={styles.con}>
       <FlatList
-        data={cards}
+        data={data}
         renderItem={({ item }) => (
           <Card
-            image={item.image}
+            imageUrl={item.image_url}
             title={item.title}
-            subtitle={item.subtitle}
+            price={item.price}
             style={styles.card}
             onPress={() => navigation.navigate("Details", item)}
           />
