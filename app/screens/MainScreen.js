@@ -1,41 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { FlatList, StyleSheet, View, ActivityIndicator } from "react-native";
+import LottieView from "lottie-react-native";
 
 import { supabase } from "../db/supabase";
 import Card from "../components/Card";
-import globals from "../config/globals";
+import globals, { colors } from "../config/globals";
+import useRequest from "../hooks/useRequest";
 
 export default function MainScreen({ navigation }) {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    request();
-  }, []);
-
-  async function request() {
-    try {
-      const { data, error } = await supabase.from("listings").select("*");
-      console.log(data);
-      setData(data);
-    } catch (error) {}
-  }
+  const { loading, error, data } = useRequest(() =>
+    supabase.from("listings").select("*")
+  );
 
   return (
     <View style={styles.con}>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <Card
-            imageUrl={item.image_url}
-            title={item.title}
-            price={item.price}
-            style={styles.card}
-            onPress={() => navigation.navigate("Details", item)}
-          />
-        )}
-      />
+      {data ? (
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <Card
+              imageUrl={item.image_url}
+              title={item.title}
+              price={item.price}
+              style={styles.card}
+              onPress={() => navigation.navigate("Details", item)}
+            />
+          )}
+        />
+      ) : (
+        <LottieView source={require("../assets/loader_red.json")} />
+      )}
     </View>
   );
 }
