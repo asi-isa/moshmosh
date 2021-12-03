@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useFormikContext } from "formik";
 import globals, { colors } from "../../config/globals";
 
-export default function AppImageInput({ fieldName, style, addImage, images }) {
+export default function AppImageInput({ style, addImage }) {
   const [active, setActive] = useState(false);
-  const { errors, touched, setFieldValue } = useFormikContext();
 
   async function getMediaPermission() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -26,7 +24,6 @@ export default function AppImageInput({ fieldName, style, addImage, images }) {
 
     if (!result.cancelled) {
       addImage(result.uri);
-      setFieldValue(fieldName, images);
     }
   }
 
@@ -51,9 +48,9 @@ export default function AppImageInput({ fieldName, style, addImage, images }) {
           <MaterialCommunityIcons name="camera" size={42} />
         </Pressable>
       </View>
-      {touched[fieldName] && errors[fieldName] && (
+      {/* {touched[fieldName] && errors[fieldName] && (
         <Text style={{ color: "red" }}>{errors[fieldName]}</Text>
-      )}
+      )} */}
     </>
   );
 }

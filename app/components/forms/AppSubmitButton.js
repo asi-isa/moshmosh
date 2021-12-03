@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Pressable, TouchableOpacity } from "react-native";
-import { useFormikContext } from "formik";
 
 import AppText from "../AppText";
 import globals, { colors } from "../../config/globals";
 
 export default function AppSubmitButton({ title, style }) {
-  const { handleSubmit } = useFormikContext();
   const [pressed, setPressed] = useState(false);
 
   return (

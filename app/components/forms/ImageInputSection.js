@@ -7,24 +7,28 @@ import {
   Pressable,
   Alert,
 } from "react-native";
-import Tooltip from "../Tooltip";
 
+import Tooltip from "../Tooltip";
 import AppImageInput from "./AppImageInput";
 
-export default function ImageInputSection({ fieldName, style }) {
-  const [images, setImages] = useState([]);
+export default function ImageInputSection({ setValues, values, style }) {
+  const { imageUrl } = values;
   const [showTooltip, setShowTooltip] = useState(false);
 
   function addImage(uri) {
-    if (images.length < 3)
-      setImages((currentImages) => [...currentImages, uri]);
-    else Alert.alert(null, "max 3 images");
+    if (imageUrl.length < 3) {
+      setValues((currentValues) => ({
+        ...currentValues,
+        imageUrl: [...imageUrl, uri],
+      }));
+    } else Alert.alert(null, "max 3 images");
   }
 
   function removeImage(uri) {
-    setImages((currentImages) =>
-      currentImages.filter((imageUri) => imageUri !== uri)
-    );
+    setValues((currentValues) => ({
+      ...currentValues,
+      imageUrl: imageUrl.filter((imgUrl) => imgUrl != uri),
+    }));
   }
 
   function toggleTooltip(duration) {
@@ -37,13 +41,8 @@ export default function ImageInputSection({ fieldName, style }) {
 
   return (
     <ScrollView contentContainerStyle={[styles.con, style]} horizontal>
-      <AppImageInput
-        fieldName={fieldName}
-        addImage={addImage}
-        images={images}
-        style={styles.imgInput}
-      />
-      {images.map((imgUri, index) => (
+      <AppImageInput addImage={addImage} style={styles.imgInput} />
+      {imageUrl.map((imgUri, index) => (
         <Pressable
           key={index}
           onLongPress={() => removeImage(imgUri)}
@@ -58,6 +57,10 @@ export default function ImageInputSection({ fieldName, style }) {
 }
 
 const styles = StyleSheet.create({
+  con: {
+    borderWidth: 1,
+    borderColor: "blue",
+  },
   imgInput: {
     marginRight: 8,
   },

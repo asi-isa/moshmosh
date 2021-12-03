@@ -5,11 +5,11 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "../../config/globals";
 
 export default function AppTextInput({
+  name,
+  setValues,
   icon,
   iconSize = 16,
   placeholder,
-  setFieldTouched,
-  name,
   style,
   ...inputProps
 }) {
@@ -30,14 +30,18 @@ export default function AppTextInput({
       />
       <TextInput
         style={styles.input}
-        placeholder={placeholder}
+        onChangeText={(text) =>
+          setValues((currentValues) => ({ ...currentValues, [name]: text }))
+        }
+        placeholder={name}
         placeholderTextColor={colors.grey}
+        autoCapitalize="none"
+        autoCorrect={false}
         onFocus={() => {
           setFocus(true);
         }}
         onBlur={() => {
           setFocus(false);
-          setFieldTouched(name);
         }}
         {...inputProps}
       />

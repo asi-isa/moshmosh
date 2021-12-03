@@ -4,10 +4,16 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import OptionItem from "./OptionItem";
 
-export default function OptionsModal({ name, visible, onPress, data }) {
+export default function OptionsModal({
+  name,
+  visible,
+  setPressed,
+  setValues,
+  data,
+}) {
   return (
     <Modal animationType="slide" visible={visible}>
-      <Pressable onPress={() => onPress(false)}>
+      <Pressable onPress={() => setPressed(false)}>
         <MaterialCommunityIcons name="close" size={42} style={styles.icon} />
       </Pressable>
       <View style={styles.modal_view}>
@@ -15,7 +21,8 @@ export default function OptionsModal({ name, visible, onPress, data }) {
           <OptionItem
             name={name}
             option={option}
-            setPressed={onPress}
+            setPressed={setPressed}
+            setValues={setValues}
             key={index}
           />
         ))}

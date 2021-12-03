@@ -1,10 +1,10 @@
 import React from "react";
-import { FlatList, StyleSheet, View, ActivityIndicator } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import LottieView from "lottie-react-native";
 
 import { supabase } from "../db/supabase";
 import Card from "../components/Card";
-import globals, { colors } from "../config/globals";
+import globals from "../config/globals";
 import useRequest from "../hooks/useRequest";
 
 export default function MainScreen({ navigation }) {

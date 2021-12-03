@@ -12,17 +12,19 @@ const OPTIONS = [
   { value: 1, name: "electronic", icon: "headphones", color: "#fd9644" },
   { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
   { value: 3, name: "books", icon: "book", color: "#26de81" },
-  { value: 0, name: "somestuff", icon: "cards", color: "#fc5c65" },
-  { value: 1, name: "electronic", icon: "headphones", color: "#fd9644" },
-  { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
-  { value: 3, name: "books", icon: "book", color: "#26de81" },
-  { value: 2, name: "sport", icon: "basketball", color: "#fed330" },
-  { value: 3, name: "books", icon: "book", color: "#26de81" },
+  { value: 4, name: "somi", icon: "cards", color: "#fe5d15" },
+  { value: 5, name: "electo", icon: "headphones", color: "#ad96f4" },
+  ,
 ];
 
-export default function AppFormPicker({ name, style, ...otherProps }) {
+export default function AppFormPicker({
+  name,
+  setValues,
+  values,
+  style,
+  ...otherProps
+}) {
   const [pressed, setPressed] = useState(false);
-  const { values, touched, errors } = useFormikContext();
 
   return (
     <>
@@ -34,10 +36,8 @@ export default function AppFormPicker({ name, style, ...otherProps }) {
         ]}
       >
         <Pressable
-          //onPress={}
-          onPressIn={() => setPressed(true)}
-          //onPressOut={() => setPressed(false)}
-          hitSlop={10}
+          onPress={() => setPressed(true)}
+          //hitSlop={10}
           style={[styles.pressable]}
         >
           <Text style={[styles.input, values[name] && { color: colors.black }]}>
@@ -53,14 +53,15 @@ export default function AppFormPicker({ name, style, ...otherProps }) {
           <OptionsModal
             name={name}
             visible={pressed}
-            onPress={setPressed}
+            setPressed={setPressed}
+            setValues={setValues}
             data={OPTIONS}
           />
         </Pressable>
       </View>
-      {touched[name] && errors[name] && (
+      {/* {touched[name] && errors[name] && (
         <Text style={{ color: "red" }}>{errors[name]}</Text>
-      )}
+      )} */}
     </>
   );
 }

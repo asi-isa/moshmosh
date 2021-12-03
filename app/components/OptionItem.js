@@ -1,19 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Pressable } from "react-native";
-import { useFormikContext } from "formik";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import globals, { colors } from "../config/globals";
+import { colors } from "../config/globals";
 import AppText from "./AppText";
 
-export default function OptionItem({ name, option, setPressed }) {
-  const { setFieldValue } = useFormikContext();
-
+export default function OptionItem({ name, option, setValues, setPressed }) {
   return (
     <Pressable
       style={styles.option}
       onPress={() => {
-        setFieldValue(name, option);
+        setValues((currentValues) => ({ ...currentValues, [name]: option }));
         setPressed(false);
       }}
     >

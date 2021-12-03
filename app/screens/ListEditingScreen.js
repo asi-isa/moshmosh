@@ -19,6 +19,13 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function ListEditingScreen() {
+  async function submitHandler(values) {
+    console.log(values);
+    // const { data, error } = await supabase
+    //   .from("listings")
+    //   .insert([{ some_column: "someValue", other_column: "otherValue" }]);
+  }
+
   return (
     <View style={styles.con}>
       <View style={styles.header}>
@@ -28,38 +35,7 @@ export default function ListEditingScreen() {
       </View>
 
       <View style={styles.form}>
-        <AppForm
-          initialValues={{
-            img: "",
-            title: "",
-            price: "",
-            category: "",
-            description: "",
-          }}
-          onSubmit={(values) => console.log(values)}
-          validationSchema={validationSchema}
-        >
-          <ImageInputSection fieldName="img" style={styles.childStyles} />
-
-          <AppFormField
-            name="title"
-            style={styles.childStyles}
-            placeholder="Title"
-          />
-          <AppFormField
-            name="price"
-            style={styles.childStyles}
-            placeholder="Price"
-          />
-          <AppFormPicker name="category" style={styles.childStyles} />
-          <AppFormField
-            name="description"
-            style={styles.childStyles}
-            placeholder="Description"
-          />
-
-          <AppSubmitButton title="Post" style={styles.btn} />
-        </AppForm>
+        <AppForm />
       </View>
     </View>
   );
@@ -82,6 +58,7 @@ const styles = StyleSheet.create({
   },
   form: {
     marginHorizontal: globals.vw * 0.05,
+    flex: 1,
   },
   btn: {
     marginTop: globals.vh * 0.05,
