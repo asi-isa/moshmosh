@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useFormikContext } from "formik";
+import React, { useEffect, useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -14,11 +15,16 @@ import AppImageInput from "./AppImageInput";
 export default function ImageInputSection({ fieldName, style }) {
   const [images, setImages] = useState([]);
   const [showTooltip, setShowTooltip] = useState(false);
+  const { setFieldValue } = useFormikContext();
+
+  useEffect(() => {
+    setFieldValue(fieldName, images);
+  }, [images]);
 
   function addImage(uri) {
-    if (images.length < 3)
+    if (images.length < 3) {
       setImages((currentImages) => [...currentImages, uri]);
-    else Alert.alert(null, "max 3 images");
+    } else Alert.alert(null, "max 3 images");
   }
 
   function removeImage(uri) {

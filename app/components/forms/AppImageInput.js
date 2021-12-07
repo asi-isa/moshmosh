@@ -3,11 +3,11 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFormikContext } from "formik";
-import globals, { colors } from "../../config/globals";
+import { colors } from "../../config/globals";
 
 export default function AppImageInput({ fieldName, style, addImage, images }) {
   const [active, setActive] = useState(false);
-  const { errors, touched, setFieldValue } = useFormikContext();
+  const { errors, touched } = useFormikContext();
 
   async function getMediaPermission() {
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -26,7 +26,6 @@ export default function AppImageInput({ fieldName, style, addImage, images }) {
 
     if (!result.cancelled) {
       addImage(result.uri);
-      setFieldValue(fieldName, images);
     }
   }
 

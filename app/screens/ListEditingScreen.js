@@ -51,12 +51,13 @@ export default function ListEditingScreen() {
             style={styles.childStyles}
             placeholder="Price"
           />
-          <AppFormPicker name="category" style={styles.childStyles} />
           <AppFormField
             name="description"
             style={styles.childStyles}
             placeholder="Description"
           />
+
+          <AppFormPicker name="category" style={styles.childStyles} />
 
           <AppSubmitButton title="Post" style={styles.btn} />
         </AppForm>
